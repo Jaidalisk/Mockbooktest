@@ -1,57 +1,33 @@
-document.addEventListener("DOMContentLoaded", function() {
-    updateCountdown();
-    generateQuiz();
-    changeBannerImage();
-});
+// Dynamic Banner Images
+const bannerImages = ["images/banner1.png", "images/banner2.png"];
+let currentImageIndex = Math.floor(Math.random() * bannerImages.length);
+document.querySelector(".banner").src = bannerImages[currentImageIndex];
 
-// Countdown to Exam
-function updateCountdown() {
-    const examDate = new Date("2025-06-01").getTime();
-    const now = new Date().getTime();
-    const timeLeft = examDate - now;
-    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-    document.getElementById("countdown").innerText = days + " days left";
-}
-
-// Quiz Section
-const quizData = [
+// Random Quiz Question
+const quizQuestions = [
     { question: "What is the capital of India?", options: ["Delhi", "Mumbai", "Kolkata", "Chennai"], answer: "Delhi" },
-    { question: "Which planet is known as the Red Planet?", options: ["Earth", "Mars", "Jupiter", "Venus"], answer: "Mars" },
-    { question: "Who wrote the Indian National Anthem?", options: ["Tagore", "Premchand", "Gandhi", "Nehru"], answer: "Tagore" }
+    { question: "Who wrote the Indian National Anthem?", options: ["Rabindranath Tagore", "Sarojini Naidu", "Bankim Chandra", "Mahatma Gandhi"], answer: "Rabindranath Tagore" },
+    { question: "What is the national currency of India?", options: ["Rupee", "Dollar", "Pound", "Euro"], answer: "Rupee" }
 ];
 
-function generateQuiz() {
-    const randomQuiz = quizData[Math.floor(Math.random() * quizData.length)];
-    document.getElementById("quiz-question").innerText = randomQuiz.question;
-    let optionsHTML = "";
-    randomQuiz.options.forEach(option => {
-        optionsHTML += `<button onclick="checkAnswer('${option}', '${randomQuiz.answer}')">${option}</button>`;
+function loadQuiz() {
+    const quizContainer = document.getElementById("quiz");
+    const randomIndex = Math.floor(Math.random() * quizQuestions.length);
+    const selectedQuestion = quizQuestions[randomIndex];
+
+    let quizHTML = `<h2>Test Yourself</h2>
+                    <p>${selectedQuestion.question}</p>`;
+
+    selectedQuestion.options.forEach(option => {
+        quizHTML += `<button onclick="checkAnswer('${option}', '${selectedQuestion.answer}')">${option}</button>`;
     });
-    document.getElementById("quiz-options").innerHTML = optionsHTML;
+
+    quizHTML += `<p id="quiz-result"></p>`;
+    quizContainer.innerHTML = quizHTML;
 }
 
 function checkAnswer(selected, correct) {
-    const result = document.getElementById("quiz-result");
-    if (selected === correct) {
-        result.innerText = "Correct! 🎉";
-    } else {
-        result.innerText = "Wrong answer. Try again!";
-    }
+    document.getElementById("quiz-result").innerText = selected === correct ? "Correct! 🎉" : "Wrong answer. Try again!";
 }
 
-// Dynamic Banner Images
-const bannerImages = [
-    "banner1.jpg",
-    "banner2.jpg",
-    "banner3.jpg"
-];
-
-function changeBannerImage() {
-    const randomImage = bannerImages[Math.floor(Math.random() * bannerImages.length)];
-    document.getElementById("dynamic-banner").src = randomImage;
-}
-
-// Payment Simulation
-function processPayment() {
-    alert("Redirecting to secure payment...");
-}
+window.onload = loadQuiz;
