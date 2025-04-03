@@ -13,8 +13,10 @@
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#materials">Study Materials</a></li>
+                <li><a href="#quiz">Quiz</a></li>
                 <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#login">Login</a></li>
+                <li><button onclick="toggleDarkMode()">🌙</button></li>
             </ul>
         </nav>
     </header>
@@ -22,6 +24,8 @@
     <section id="home">
         <h2>Welcome to Mockbook</h2>
         <p>Your ultimate resource for government exam preparation. Get free and premium study materials now!</p>
+        <h3>Next Government Exam In:</h3>
+        <p id="countdown"></p>
     </section>
     
     <section id="materials">
@@ -38,6 +42,17 @@
         </div>
     </section>
     
+    <section id="quiz">
+        <h2>Test Yourself</h2>
+        <p>Answer the question below:</p>
+        <p>What is the capital of India?</p>
+        <button onclick="checkAnswer('Delhi')">Delhi</button>
+        <button onclick="checkAnswer('Mumbai')">Mumbai</button>
+        <button onclick="checkAnswer('Kolkata')">Kolkata</button>
+        <button onclick="checkAnswer('Chennai')">Chennai</button>
+        <p id="quiz-result"></p>
+    </section>
+    
     <section id="pricing">
         <h2>Pricing</h2>
         <p>Access premium content for a one-time fee of ₹199.</p>
@@ -49,6 +64,96 @@
         <button onclick="login()">Login</button>
     </section>
     
-    <script src="script.js"></script>
+    <script>
+        function downloadFree() {
+            alert("Your free study guide is downloading!");
+        }
+
+        function purchasePremium() {
+            alert("Premium content is locked. Please pay ₹199 to unlock.");
+        }
+
+        function login() {
+            let username = document.getElementById("username").value;
+            if (username) {
+                alert("Welcome, " + username + "!");
+            } else {
+                alert("Please enter a valid username.");
+            }
+        }
+
+        function checkAnswer(answer) {
+            if (answer === 'Delhi') {
+                document.getElementById("quiz-result").innerText = "Correct! 🎉";
+            } else {
+                document.getElementById("quiz-result").innerText = "Wrong answer. Try again!";
+            }
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+
+        function updateCountdown() {
+            const examDate = new Date("2025-06-01").getTime();
+            const now = new Date().getTime();
+            const timeLeft = examDate - now;
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            document.getElementById("countdown").innerText = days + " days left";
+        }
+
+        setInterval(updateCountdown, 1000);
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background: #007bff;
+            color: white;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        .material {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px auto;
+            width: 50%;
+        }
+
+        .premium {
+            background: #f8d7da;
+        }
+
+        .dark-mode {
+            background-color: #222;
+            color: white;
+        }
+    </style>
 </body>
 </html>
