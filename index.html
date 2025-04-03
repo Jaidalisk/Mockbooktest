@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mockbook - Government Exam Prep</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Mockbook</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#materials">Study Materials</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="home">
+        <h2>Welcome to Mockbook</h2>
+        <p>Your ultimate resource for government exam preparation. Get free and premium study materials now!</p>
+    </section>
+    
+    <section id="materials">
+        <h2>Study Materials</h2>
+        <div class="material">
+            <h3>Free Study Guide</h3>
+            <p>Basic concepts and sample questions.</p>
+            <button onclick="downloadFree()">Download</button>
+        </div>
+        <div class="material premium">
+            <h3>Premium Notes</h3>
+            <p>Detailed study notes with explanations.</p>
+            <button onclick="purchasePremium()">Unlock for ₹199</button>
+        </div>
+    </section>
+    
+    <section id="pricing">
+        <h2>Pricing</h2>
+        <p>Access premium content for a one-time fee of ₹199.</p>
+    </section>
+    
+    <section id="login">
+        <h2>Login / Sign Up</h2>
+        <input type="text" id="username" placeholder="Enter username">
+        <button onclick="login()">Login</button>
+    </section>
+    
+    <script src="script.js"></script>
+</body>
+</html>
