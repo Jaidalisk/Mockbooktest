@@ -40,3 +40,8 @@ section {
 .premium {
     background: #f8d7da;
 }
+
+.dark-mode {
+    background-color: #222;
+    color: white;
+}
