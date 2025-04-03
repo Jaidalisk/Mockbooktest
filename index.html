@@ -1,48 +1,60 @@
-<!-- New Dynamic Quiz Section -->
-<section id="quiz">
-    <img src="quiz-banner.jpg" alt="Quiz Time" class="banner-image">
-    <h2>Test Yourself</h2>
-    <p id="quiz-question"></p>
-    <div id="quiz-options"></div>
-    <p id="quiz-result"></p>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mockbook - Government Exam Prep</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Mockbook</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#materials">Study Materials</a></li>
+                <li><a href="#quiz">Quiz</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="login.html">Login / Sign Up</a></li>
+                <li><button onclick="toggleDarkMode()">🌙</button></li>
+            </ul>
+        </nav>
+    </header>
 
-<script>
-    const quizData = [
-        { question: "What is the capital of India?", options: ["Delhi", "Mumbai", "Kolkata", "Chennai"], answer: "Delhi" },
-        { question: "Who wrote the Indian National Anthem?", options: ["Rabindranath Tagore", "Bankim Chandra", "Sarojini Naidu", "Subhash Chandra Bose"], answer: "Rabindranath Tagore" },
-        { question: "Which planet is known as the Red Planet?", options: ["Earth", "Venus", "Mars", "Jupiter"], answer: "Mars" },
-        { question: "What is the largest ocean on Earth?", options: ["Atlantic", "Indian", "Arctic", "Pacific"], answer: "Pacific" },
-        { question: "Who was the first President of India?", options: ["Dr. Rajendra Prasad", "Jawaharlal Nehru", "Sardar Patel", "Dr. B.R. Ambedkar"], answer: "Dr. Rajendra Prasad" },
-        { question: "What is the national currency of India?", options: ["Dollar", "Euro", "Rupee", "Yen"], answer: "Rupee" },
-        { question: "Which gas is most abundant in Earth’s atmosphere?", options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"], answer: "Nitrogen" },
-        { question: "Who is known as the Missile Man of India?", options: ["A.P.J. Abdul Kalam", "Vikram Sarabhai", "C.V. Raman", "Homi Bhabha"], answer: "A.P.J. Abdul Kalam" },
-        { question: "Which is the longest river in India?", options: ["Ganga", "Brahmaputra", "Yamuna", "Godavari"], answer: "Ganga" },
-        { question: "Which Mughal Emperor built the Taj Mahal?", options: ["Babur", "Akbar", "Shah Jahan", "Aurangzeb"], answer: "Shah Jahan" }
-    ];
+    <section id="home">
+        <h2>Welcome to Mockbook</h2>
+        <p>Your ultimate resource for government exam preparation.</p>
+        <img id="dynamic-banner" src="" alt="Exam Preparation Image">
+        <h3>Next Government Exam In:</h3>
+        <p id="countdown"></p>
+    </section>
 
-    function loadQuiz() {
-        let randomIndex = Math.floor(Math.random() * quizData.length);
-        let quiz = quizData[randomIndex];
+    <section id="materials">
+        <h2>Study Materials</h2>
+        <p>Access free and premium study materials to boost your preparation.</p>
+    </section>
 
-        document.getElementById("quiz-question").innerText = quiz.question;
-        document.getElementById("quiz-options").innerHTML = "";
+    <section id="quiz">
+        <h2>Test Yourself</h2>
+        <p id="quiz-question"></p>
+        <div id="quiz-options"></div>
+        <p id="quiz-result"></p>
+    </section>
 
-        quiz.options.forEach(option => {
-            let button = document.createElement("button");
-            button.innerText = option;
-            button.onclick = function() { checkAnswer(option, quiz.answer); };
-            document.getElementById("quiz-options").appendChild(button);
-        });
-    }
+    <section id="pricing">
+        <h2>Pricing & Payment</h2>
+        <p>Unlock premium content for just ₹199.</p>
+        <button onclick="processPayment()">Pay via UPI</button>
+        <button onclick="processPayment()">Pay via Card</button>
+    </section>
 
-    function checkAnswer(selected, correct) {
-        if (selected === correct) {
-            document.getElementById("quiz-result").innerText = "✅ Correct! 🎉";
-        } else {
-            document.getElementById("quiz-result").innerText = "❌ Wrong answer. Try again!";
-        }
-    }
+    <section id="contact">
+        <h2>Connect with Us</h2>
+        <p>📸 Instagram: [Your Instagram Handle]</p>
+        <p>📢 Telegram: [Your Telegram Handle]</p>
+        <p>▶️ YouTube: [Your YouTube Channel]</p>
+    </section>
 
-    window.onload = loadQuiz;
-</script>
+    <script src="script.js"></script>
+</body>
+</html>
